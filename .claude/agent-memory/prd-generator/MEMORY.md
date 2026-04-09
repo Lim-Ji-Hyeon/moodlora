@@ -1,0 +1,1 @@
+- [1인 개발자 프로필](user_solo_developer.md) — jihyeonlim은 Moodlora를 혼자 개발, 한국어 문서화

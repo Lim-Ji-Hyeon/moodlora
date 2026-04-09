@@ -1,0 +1,1 @@
+- [Moodlora 프로젝트 개요](project_moodlora_overview.md) — 감정 기반 익명 소셜 플랫폼, 1인 개발, 핵심 기술 결정사항
