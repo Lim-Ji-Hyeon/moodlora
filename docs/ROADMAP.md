@@ -91,13 +91,13 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] Supabase 프로젝트 생성 및 환경변수 설정 (`.env.local`에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` 구성)
-- [ ] 커스텀 ENUM 타입 생성 (`emotion_type`, `reaction_type`, `report_reason`)
-- [ ] 핵심 테이블 생성: `profiles`, `posts`, `tags`, `post_tags`, `reactions`, `comments`, `emotion_logs`
-- [ ] 안전 기능 테이블 생성: `reports`, `hidden_posts`, `blocks`
-- [ ] 주요 인덱스 생성 (`idx_posts_emotion`, `idx_posts_created_at`, `idx_comments_post_id`, `idx_reactions_post_id`, `idx_emotion_logs_user`)
-- [ ] RLS 정책 설정 (PRD 6-2 테이블별 RLS 정책 적용)
-- [ ] `auth.users` INSERT 트리거로 `profiles` 자동 생성 함수 작성
+- [x] Supabase 프로젝트 생성 및 환경변수 설정 (`.env.local`에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` 구성)
+- [x] 커스텀 ENUM 타입 생성 (`emotion_type`, `reaction_type`, `report_reason`)
+- [x] 핵심 테이블 생성: `profiles`, `posts`, `tags`, `post_tags`, `reactions`, `comments`, `emotion_logs`
+- [x] 안전 기능 테이블 생성: `reports`, `hidden_posts`, `blocks`
+- [x] 주요 인덱스 생성 (`idx_posts_emotion`, `idx_posts_created_at`, `idx_comments_post_id`, `idx_reactions_post_id`, `idx_emotion_logs_user`)
+- [x] RLS 정책 설정 (PRD 6-2 테이블별 RLS 정책 적용)
+- [x] `auth.users` INSERT 트리거로 `profiles` 자동 생성 함수 작성
 
 ---
 
@@ -105,10 +105,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 1일
 
-- [ ] 서버 컴포넌트용 Supabase 클라이언트 생성 (`@supabase/ssr` 활용, 쿠키 기반 세션)
-- [ ] 클라이언트 컴포넌트용 Supabase 브라우저 클라이언트 생성
-- [ ] Route Handler용 Supabase 클라이언트 생성 (`SUPABASE_SERVICE_ROLE_KEY`는 서버 사이드에서만 사용)
-- [ ] Supabase TypeScript 타입 자동 생성 설정 (`supabase gen types`)
+- [x] 서버 컴포넌트용 Supabase 클라이언트 생성 (`@supabase/ssr` 활용, 쿠키 기반 세션)
+- [x] 클라이언트 컴포넌트용 Supabase 브라우저 클라이언트 생성
+- [x] Route Handler용 Supabase 클라이언트 생성 (`SUPABASE_SERVICE_ROLE_KEY`는 서버 사이드에서만 사용)
+- [x] Supabase TypeScript 타입 자동 생성 설정 (`supabase gen types`)
 
 ---
 
@@ -116,10 +116,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 1일
 
-- [ ] 7가지 감정 상수 정의 (`EMOTIONS` 배열: key, label, emoji, color 포함)
-- [ ] 8종 상황 태그 상수 정의 (`TAGS`: 직장, 연애, 가족, 건강, 학업, 친구, 자기계발, 기타)
-- [ ] 4종 공감 반응 상수 정의 (`REACTIONS`: ME_TOO, SAD, ANGRY, CHEER_UP)
-- [ ] 보완 감정 매핑 상수 정의 (`COMPLEMENTARY_EMOTIONS`: ANXIETY->CALM, SADNESS->JOY/EXCITEMENT, ANGER->CALM)
+- [x] 7가지 감정 상수 정의 (`EMOTIONS` 배열: key, label, emoji, color 포함)
+- [x] 8종 상황 태그 상수 정의 (`TAGS`: 직장, 연애, 가족, 건강, 학업, 친구, 자기계발, 기타)
+- [x] 4종 공감 반응 상수 정의 (`REACTIONS`: ME_TOO, SAD, ANGRY, CHEER_UP)
+- [x] 보완 감정 매핑 상수 정의 (`COMPLEMENTARY_EMOTIONS`: ANXIETY->CALM, SADNESS->JOY/EXCITEMENT, ANGER->CALM)
 - [ ] 전역 TypeScript 타입 정의 (`Post`, `Comment`, `Reaction`, `EmotionLog`, `Profile` 등)
 
 ---
@@ -128,8 +128,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 1일
 
-- [ ] 감정 스토어 생성 (현재 선택 감정 상태, persist 미들웨어로 localStorage 영속화)
-- [ ] 감정 선택/변경/초기화 액션 정의
+- [x] 감정 스토어 생성 (현재 선택 감정 상태, persist 미들웨어로 localStorage 영속화)
+- [x] 감정 선택/변경/초기화 액션 정의
 - [ ] `emotion_selected` 쿠키 동기화 로직 (Zustand 상태 변경 시 쿠키도 함께 업데이트)
 
 ---
@@ -161,8 +161,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] TanStack Query Provider 구성 (`QueryClientProvider`, `ReactQueryDevtools`)
-- [ ] 전역 레이아웃 구성 (`app/layout.tsx`: 메타데이터, `lang="ko"`, Provider 래핑)
+- [x] TanStack Query Provider 구성 (`QueryClientProvider`, `ReactQueryDevtools`)
+- [x] 전역 레이아웃 구성 (`app/layout.tsx`: 메타데이터, `lang="ko"`, Provider 래핑)
 - [ ] shadcn/ui 초기 설정 및 공통 컴포넌트 설치 (Button, Card, Dialog, Toast, Skeleton, Input, Textarea 등)
 - [ ] 공통 Header/Navigation 컴포넌트 구현 (감정 상태 표시, 로그인/로그아웃 버튼)
 - [ ] Toast 알림 시스템 설정 (비로그인 상태 공감/글 작성 시도 시 로그인 유도 토스트)
