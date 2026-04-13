@@ -36,6 +36,9 @@ yarn-error.log*
 # MCP 설정 (API 키 포함)
 .mcp.json
 
+# Shrimp Task Manager 데이터
+shrimp_data/
+
 # vercel
 .vercel
 
