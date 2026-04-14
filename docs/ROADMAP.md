@@ -120,7 +120,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 - [x] 8종 상황 태그 상수 정의 (`TAGS`: 직장, 연애, 가족, 건강, 학업, 친구, 자기계발, 기타)
 - [x] 4종 공감 반응 상수 정의 (`REACTIONS`: ME_TOO, SAD, ANGRY, CHEER_UP)
 - [x] 보완 감정 매핑 상수 정의 (`COMPLEMENTARY_EMOTIONS`: ANXIETY->CALM, SADNESS->JOY/EXCITEMENT, ANGER->CALM)
-- [ ] 전역 TypeScript 타입 정의 (`Post`, `Comment`, `Reaction`, `EmotionLog`, `Profile` 등)
+- [x] 전역 TypeScript 타입 정의 (`Post`, `Comment`, `Reaction`, `EmotionLog`, `Profile` 등)
 
 ---
 
@@ -130,7 +130,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 - [x] 감정 스토어 생성 (현재 선택 감정 상태, persist 미들웨어로 localStorage 영속화)
 - [x] 감정 선택/변경/초기화 액션 정의
-- [ ] `emotion_selected` 쿠키 동기화 로직 (Zustand 상태 변경 시 쿠키도 함께 업데이트)
+- [x] `emotion_selected` 쿠키 동기화 로직 (Zustand 상태 변경 시 쿠키도 함께 업데이트)
 
 ---
 
@@ -138,11 +138,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] Supabase 대시보드에서 Google OAuth Provider 설정
-- [ ] Supabase 대시보드에서 Kakao OAuth Provider 설정 (개발 단계: 테스터 계정)
-- [ ] `/auth/callback` Route Handler 구현 (OAuth 토큰 처리, 세션 쿠키 설정)
-- [ ] `useCurrentUser` 커스텀 훅 구현 (현재 로그인 사용자 정보 조회)
-- [ ] Playwright MCP 테스트: OAuth 콜백 처리 및 세션 생성 확인
+- [x] Supabase 대시보드에서 Google OAuth Provider 설정
+- [x] Supabase 대시보드에서 Kakao OAuth Provider 설정 (개발 단계: 테스터 계정)
+<!-- 대시보드 설정은 수동 작업 필요. Redirect URI: https://zhvcwvbityltywbjulca.supabase.co/auth/v1/callback -->
+- [x] `/auth/callback` Route Handler 구현 (OAuth 토큰 처리, 세션 쿠키 설정)
+- [x] `useCurrentUser` 커스텀 훅 구현 (현재 로그인 사용자 정보 조회)
+- [x] Playwright MCP 테스트: OAuth 콜백 처리 및 세션 생성 확인
 
 ---
 
@@ -150,10 +151,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 **담당**: 풀스택 | **예상**: 1일
 
-- [ ] Next.js Middleware 구현: Supabase 세션 갱신 처리
-- [ ] `emotion_selected` 쿠키 미존재 시 `/` -> `/welcome` 리다이렉트
-- [ ] 보호 경로 정의: `/posts/new`, `/profile`, `/history` 접근 시 미인증 사용자 `/login` 리다이렉트
-- [ ] 비로그인 상태에서 `/feed`, `/posts/[id]` 읽기 전용 접근 허용
+- [x] Next.js Middleware 구현: Supabase 세션 갱신 처리
+- [x] `emotion_selected` 쿠키 미존재 시 `/` -> `/welcome` 리다이렉트
+- [x] 보호 경로 정의: `/posts/new`, `/profile`, `/history` 접근 시 미인증 사용자 `/login` 리다이렉트
+- [x] 비로그인 상태에서 `/feed`, `/posts/[id]` 읽기 전용 접근 허용
 
 ---
 
@@ -163,10 +164,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
 - [x] TanStack Query Provider 구성 (`QueryClientProvider`, `ReactQueryDevtools`)
 - [x] 전역 레이아웃 구성 (`app/layout.tsx`: 메타데이터, `lang="ko"`, Provider 래핑)
-- [ ] shadcn/ui 초기 설정 및 공통 컴포넌트 설치 (Button, Card, Dialog, Toast, Skeleton, Input, Textarea 등)
-- [ ] 공통 Header/Navigation 컴포넌트 구현 (감정 상태 표시, 로그인/로그아웃 버튼)
-- [ ] Toast 알림 시스템 설정 (비로그인 상태 공감/글 작성 시도 시 로그인 유도 토스트)
-- [ ] 반응형 레이아웃 기본 구조 (모바일 우선, 375px 최소 뷰포트, 768px 이상 데스크탑 보정)
+- [x] shadcn/ui 초기 설정 및 공통 컴포넌트 설치 (Button, Card, Dialog, Toast, Skeleton, Input, Textarea 등)
+- [x] 공통 Header/Navigation 컴포넌트 구현 (감정 상태 표시, 로그인/로그아웃 버튼)
+- [x] Toast 알림 시스템 설정 (비로그인 상태 공감/글 작성 시도 시 로그인 유도 토스트)
+- [x] 반응형 레이아웃 기본 구조 (모바일 우선, 375px 최소 뷰포트, 768px 이상 데스크탑 보정)
 
 ---
 
