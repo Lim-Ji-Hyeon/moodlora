@@ -4,119 +4,189 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Moodlora 디자인 토큰 ──────────────────────────────────────────────────
+   Stitch 디자인 시스템(assets/12305768813800255499)에서 추출한 컬러 팔레트.
+   Primary: #8B5CF6 (보라) | Secondary: #EC4899 (핑크) | Tertiary: #F59E0B (앰버)
+─────────────────────────────────────────────────────────────────────────── */
+
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* shadcn/ui 시스템 토큰 */
+  --color-background:              var(--background);
+  --color-foreground:              var(--foreground);
+  --color-card:                    var(--card);
+  --color-card-foreground:         var(--card-foreground);
+  --color-popover:                 var(--popover);
+  --color-popover-foreground:      var(--popover-foreground);
+  --color-primary:                 var(--primary);
+  --color-primary-foreground:      var(--primary-foreground);
+  --color-secondary:               var(--secondary);
+  --color-secondary-foreground:    var(--secondary-foreground);
+  --color-muted:                   var(--muted);
+  --color-muted-foreground:        var(--muted-foreground);
+  --color-accent:                  var(--accent);
+  --color-accent-foreground:       var(--accent-foreground);
+  --color-destructive:             var(--destructive);
+  --color-border:                  var(--border);
+  --color-input:                   var(--input);
+  --color-ring:                    var(--ring);
+
+  /* 반응형 radius (ROUND_EIGHT = 8px 기준) */
+  --radius-sm:  calc(var(--radius) * 0.5);   /* 4px  */
+  --radius-md:  var(--radius);               /* 8px  */
+  --radius-lg:  calc(var(--radius) * 1.5);   /* 12px */
+  --radius-xl:  calc(var(--radius) * 2);     /* 16px */
+  --radius-2xl: calc(var(--radius) * 3);     /* 24px */
+
+  /* 감정 컬러 토큰 */
+  --color-emotion-joy:      var(--emotion-joy);
+  --color-emotion-excitement: var(--emotion-excitement);
+  --color-emotion-calm:     var(--emotion-calm);
+  --color-emotion-sadness:  var(--emotion-sadness);
+  --color-emotion-anger:    var(--emotion-anger);
+  --color-emotion-lethargy: var(--emotion-lethargy);
+  --color-emotion-anxiety:  var(--emotion-anxiety);
+
+  /* 차트 컬러 (감정 순서 대응) */
+  --color-chart-1: var(--emotion-joy);
+  --color-chart-2: var(--emotion-calm);
+  --color-chart-3: var(--emotion-sadness);
+  --color-chart-4: var(--emotion-anxiety);
+  --color-chart-5: var(--emotion-anger);
+
+  /* 폰트 */
+  --font-sans:    var(--font-plus-jakarta-sans);
+  --font-heading: var(--font-plus-jakarta-sans);
+  --font-mono:    var(--font-geist-mono);
+
+  /* 사이드바 */
+  --color-sidebar-ring:                 var(--sidebar-ring);
+  --color-sidebar-border:               var(--sidebar-border);
+  --color-sidebar-accent-foreground:    var(--sidebar-accent-foreground);
+  --color-sidebar-accent:               var(--sidebar-accent);
+  --color-sidebar-primary-foreground:   var(--sidebar-primary-foreground);
+  --color-sidebar-primary:              var(--sidebar-primary);
+  --color-sidebar-foreground:           var(--sidebar-foreground);
+  --color-sidebar:                      var(--sidebar);
 }
 
+/* ─── 라이트 모드 ─────────────────────────────────────────────────────────── */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* 배경 */
+  --background:           #faf8ff;   /* 옅은 보라빛 흰색 (Stitch surface) */
+  --foreground:           #2f323c;   /* on_surface */
+
+  /* 카드 / 팝오버 */
+  --card:                 #ffffff;   /* surface_container_lowest */
+  --card-foreground:      #2f323c;
+  --popover:              #ffffff;
+  --popover-foreground:   #2f323c;
+
+  /* Primary — 보라 #8B5CF6 */
+  --primary:              #8B5CF6;
+  --primary-foreground:   #fdf7ff;   /* on_primary */
+
+  /* Secondary — 서브 배경/컨테이너 */
+  --secondary:            #f3f3fc;   /* surface_container_low */
+  --secondary-foreground: #2f323c;
+
+  /* Muted */
+  --muted:                #ededf8;   /* surface_container */
+  --muted-foreground:     #5c5f6a;   /* on_surface_variant */
+
+  /* Accent */
+  --accent:               #e6e7f4;   /* surface_container_high */
+  --accent-foreground:    #2f323c;
+
+  /* Destructive */
+  --destructive:          #ac3149;   /* error */
+
+  /* 보더 / 인풋 / 링 */
+  --border:               #E9E7F5;   /* outline_variant 계열 */
+  --input:                #f3f3fc;
+  --ring:                 #8B5CF6;
+
+  /* Radius (ROUND_EIGHT = 8px) */
+  --radius: 0.5rem;
+
+  /* 감정 컬러 */
+  --emotion-joy:        #F59E0B;   /* amber-400  기쁨   */
+  --emotion-excitement: #EC4899;   /* pink-500   설렘   */
+  --emotion-calm:       #0EA5E9;   /* sky-500    평온   */
+  --emotion-sadness:    #3B82F6;   /* blue-500   슬픔   */
+  --emotion-anger:      #EF4444;   /* red-500    분노   */
+  --emotion-lethargy:   #64748B;   /* slate-500  무기력  */
+  --emotion-anxiety:    #8B5CF6;   /* purple-500 불안   */
+  --emotion-loneliness: #6366F1;   /* indigo-500 외로움  */
+
+  /* 사이드바 */
+  --sidebar:                    #f3f3fc;
+  --sidebar-foreground:         #2f323c;
+  --sidebar-primary:            #8B5CF6;
+  --sidebar-primary-foreground: #fdf7ff;
+  --sidebar-accent:             #ededf8;
+  --sidebar-accent-foreground:  #2f323c;
+  --sidebar-border:             #E9E7F5;
+  --sidebar-ring:               #8B5CF6;
 }
 
+/* ─── 다크 모드 ──────────────────────────────────────────────────────────── */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* 배경 (PRD 다크 모드 스펙) */
+  --background:           #0F0A1E;   /* 가장 어두운 보라 배경 */
+  --foreground:           #E2E0F0;
+
+  /* 카드 / 팝오버 */
+  --card:                 #211840;   /* 카드 배경 */
+  --card-foreground:      #E2E0F0;
+  --popover:              #1A1330;
+  --popover-foreground:   #E2E0F0;
+
+  /* Primary */
+  --primary:              #A78BFA;   /* 다크에서 밝게 */
+  --primary-foreground:   #1A1330;
+
+  /* Secondary */
+  --secondary:            #1A1330;   /* 서브 배경 */
+  --secondary-foreground: #E2E0F0;
+
+  /* Muted */
+  --muted:                #2D2250;
+  --muted-foreground:     #9D9AB5;
+
+  /* Accent */
+  --accent:               #2D2250;
+  --accent-foreground:    #E2E0F0;
+
+  /* Destructive */
+  --destructive:          #f76a80;
+
+  /* 보더 / 인풋 / 링 */
+  --border:               #2D2250;
+  --input:                #2D2250;
+  --ring:                 #A78BFA;
+
+  /* 감정 컬러 (다크에서 밝게 조정) */
+  --emotion-joy:        #FCD34D;   /* amber-300  */
+  --emotion-excitement: #F472B6;   /* pink-400   */
+  --emotion-calm:       #38BDF8;   /* sky-400    */
+  --emotion-sadness:    #60A5FA;   /* blue-400   */
+  --emotion-anger:      #F87171;   /* red-400    */
+  --emotion-lethargy:   #94A3B8;   /* slate-400  */
+  --emotion-anxiety:    #C084FC;   /* purple-400 */
+  --emotion-loneliness: #818CF8;   /* indigo-400 */
+
+  /* 사이드바 */
+  --sidebar:                    #1A1330;
+  --sidebar-foreground:         #E2E0F0;
+  --sidebar-primary:            #A78BFA;
+  --sidebar-primary-foreground: #1A1330;
+  --sidebar-accent:             #2D2250;
+  --sidebar-accent-foreground:  #E2E0F0;
+  --sidebar-border:             #2D2250;
+  --sidebar-ring:               #A78BFA;
 }
 
+/* ─── 기본 스타일 ────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border outline-ring/50;
