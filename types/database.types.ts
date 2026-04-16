@@ -387,6 +387,7 @@ export type Database = {
         | "ANGER"
         | "LETHARGY"
         | "ANXIETY"
+        | "LONELINESS"
       reaction_type: "ME_TOO" | "SAD" | "ANGRY" | "CHEER_UP"
       report_reason:
         | "SPAM"
@@ -529,6 +530,7 @@ export const Constants = {
         "ANGER",
         "LETHARGY",
         "ANXIETY",
+        "LONELINESS",
       ],
       reaction_type: ["ME_TOO", "SAD", "ANGRY", "CHEER_UP"],
       report_reason: [
