@@ -257,13 +257,13 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `GET /api/posts` Route Handler 구현: 감정 필터, 태그 필터(다중 선택), 정렬(최신순/인기순), 커서 기반 페이지네이션
-- [ ] `searchParams`를 반드시 `await`하여 처리 (Next.js 16.2.2 필수)
-- [ ] 차단한 사용자 게시글 서버 사이드 필터링, 숨긴 게시글 제외
-- [ ] 익명 게시글의 `author_id` null 마스킹 처리
-- [ ] 초기 로드 20개, 커서 기반 다음 페이지 응답 구조 (`nextCursor`, `hasMore`)
-- [ ] Zod 스키마로 쿼리 파라미터 검증
-- [ ] Playwright MCP 테스트: 피드 API 필터/정렬/페이지네이션 동작 확인
+- [x] `GET /api/posts` Route Handler 구현: 감정 필터, 태그 필터(다중 선택), 정렬(최신순/인기순), 커서 기반 페이지네이션
+- [x] `searchParams`를 반드시 `await`하여 처리 (Next.js 16.2.2 필수)
+- [x] 차단한 사용자 게시글 서버 사이드 필터링, 숨긴 게시글 제외
+- [x] 익명 게시글의 `author_id` null 마스킹 처리
+- [x] 초기 로드 20개, 커서 기반 다음 페이지 응답 구조 (`nextCursor`, `hasMore`)
+- [x] Zod 스키마로 쿼리 파라미터 검증
+- [x] Playwright MCP 테스트: 피드 API 필터/정렬/페이지네이션 동작 확인
 
 ---
 
