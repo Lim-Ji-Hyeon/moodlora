@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
+import { SITUATION_TAGS } from '@/lib/constants/situationTags'
 import type { PostWithMeta } from '@/types'
 import type { ReactionType } from '@/lib/constants/reactions'
 
@@ -19,6 +20,15 @@ const querySchema = z.object({
   limit:   z.coerce.number().int().min(1).max(50).default(20),
 })
 
+// ─── POST 요청 바디 스키마 ────────────────────────────────────────────────────
+
+const createPostSchema = z.object({
+  emotion:      z.enum(EMOTION_VALUES),
+  tags:         z.array(z.enum(SITUATION_TAGS)).min(1).max(5),
+  content:      z.string().min(10).max(1000),
+  is_anonymous: z.boolean().default(false),
+})
+
 // ─── 응답 타입 ────────────────────────────────────────────────────────────────
 
 type FeedApiResponse = {
@@ -26,6 +36,8 @@ type FeedApiResponse = {
   nextCursor: string | null
   hasMore:    boolean
 }
+
+type CreatePostResponse = { post: PostWithMeta }
 
 // ─── Route Handler ────────────────────────────────────────────────────────────
 
@@ -155,4 +167,81 @@ export async function GET(request: NextRequest) {
     : null
 
   return NextResponse.json({ posts: result, nextCursor, hasMore } satisfies FeedApiResponse)
+}
+
+// ─── POST /api/posts ──────────────────────────────────────────────────────────
+
+export async function POST(request: NextRequest) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) {
+    return NextResponse.json(
+      { error: { message: '로그인이 필요합니다' } },
+      { status: 401 }
+    )
+  }
+
+  let body: unknown
+  try {
+    body = await request.json()
+  } catch {
+    return NextResponse.json(
+      { error: { message: '잘못된 요청입니다' } },
+      { status: 400 }
+    )
+  }
+
+  const parsed = createPostSchema.safeParse(body)
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: { message: '입력값이 올바르지 않습니다', issues: parsed.error.issues } },
+      { status: 400 }
+    )
+  }
+
+  const { emotion, tags, content, is_anonymous } = parsed.data
+
+  const { data: newPost, error: postError } = await supabase
+    .from('posts')
+    .insert({ author_id: user.id, emotion, content, is_anonymous })
+    .select()
+    .single()
+
+  if (postError || !newPost) {
+    return NextResponse.json(
+      { error: { message: '게시글 저장에 실패했습니다' } },
+      { status: 500 }
+    )
+  }
+
+  const { data: tagRows } = await supabase
+    .from('tags')
+    .select('id, name')
+    .in('name', tags)
+
+  if (!tagRows || tagRows.length !== tags.length) {
+    return NextResponse.json(
+      { error: { message: '존재하지 않는 태그가 포함되어 있습니다' } },
+      { status: 400 }
+    )
+  }
+
+  await supabase
+    .from('post_tags')
+    .insert(tagRows.map(t => ({ post_id: newPost.id, tag_id: t.id })))
+
+  // emotion_logs 기록은 fire-and-forget — 실패해도 게시글 생성에 영향 없음
+  void supabase.from('emotion_logs').insert({ user_id: user.id, emotion })
+
+  return NextResponse.json(
+    {
+      post: {
+        ...newPost,
+        author_id:       is_anonymous ? null : newPost.author_id,
+        tags:            tagRows,
+        reaction_counts: {},
+      },
+    } satisfies CreatePostResponse,
+    { status: 201 }
+  )
 }
