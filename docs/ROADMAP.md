@@ -271,14 +271,14 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 3일
 
-- [ ] 감정 필터 바 구현 (8가지 감정 칩, 선택 시 URL `searchParams` 업데이트 및 피드 재조회)
-- [ ] 상황 태그 필터 구현 (8종 태그, 다중 선택 가능)
-- [ ] 최신순/인기순 탭 전환 UI
-- [ ] `PostCard` 컴포넌트 구현 (감정 이모지, 본문 미리보기, 태그, 반응 수, 작성 시간)
-- [ ] TanStack Query `useInfiniteQuery`로 무한 스크롤 구현 (하단 200px 이내 도달 시 자동 요청, `IntersectionObserver` 활용)
-- [ ] 마지막 페이지 도달 시 "모든 글을 읽었어요" 메시지 표시
-- [ ] 로딩 중 스켈레톤 UI 표시 (`PostCardSkeleton`)
-- [ ] **반응형**: Mobile(단일 컬럼 + 하단 탭바) / Tablet(좌측 사이드바 필터 + 우측 피드) / Desktop(3컬럼: 사이드바 + 피드 + 추천 패널)
+- [x] 감정 필터 바 구현 (8가지 감정 칩, 선택 시 URL `searchParams` 업데이트 및 피드 재조회)
+- [x] 상황 태그 필터 구현 (8종 태그, 다중 선택 가능)
+- [x] 최신순/인기순 탭 전환 UI
+- [x] `PostCard` 컴포넌트 구현 (감정 이모지, 본문 미리보기, 태그, 반응 수, 작성 시간)
+- [x] TanStack Query `useInfiniteQuery`로 무한 스크롤 구현 (하단 200px 이내 도달 시 자동 요청, `IntersectionObserver` 활용)
+- [x] 마지막 페이지 도달 시 "모든 글을 읽었어요" 메시지 표시
+- [x] 로딩 중 스켈레톤 UI 표시 (`PostCardSkeleton`)
+- [x] **반응형**: Mobile(단일 컬럼 + 하단 탭바) / Tablet(좌측 사이드바 필터 + 우측 피드) / Desktop(3컬럼: 사이드바 + 피드 + 추천 패널)
 
 ---
 
