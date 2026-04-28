@@ -296,12 +296,12 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 1일
 
-- [ ] `POST /api/posts` Route Handler 구현 (인증 필수)
-- [ ] Zod 스키마 검증: 감정(필수), 태그(1~5개), 본문(10~1,000자), 익명 토글
-- [ ] 게시글 생성 시 `post_tags` 조인 테이블에 태그 연결
-- [ ] 게시글 작성 시 `emotion_logs`에 감정 자동 기록
-- [ ] 익명 게시글의 경우 `is_anonymous: true` 저장
-- [ ] Playwright MCP 테스트: 게시글 생성 API 검증 (정상 케이스 + 유효성 실패 케이스)
+- [x] `POST /api/posts` Route Handler 구현 (인증 필수)
+- [x] Zod 스키마 검증: 감정(필수), 태그(1~5개), 본문(10~1,000자), 익명 토글
+- [x] 게시글 생성 시 `post_tags` 조인 테이블에 태그 연결
+- [x] 게시글 작성 시 `emotion_logs`에 감정 자동 기록
+- [x] 익명 게시글의 경우 `is_anonymous: true` 저장
+- [x] Playwright MCP 테스트: 게시글 생성 API 검증 (정상 케이스 + 유효성 실패 케이스)
 
 ---
 
