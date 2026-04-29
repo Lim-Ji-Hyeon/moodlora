@@ -324,12 +324,12 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `GET /api/posts/[id]` Route Handler 구현 (`params`를 반드시 `await`, 조회 시 `view_count` +1)
-- [ ] `DELETE /api/posts/[id]` Route Handler 구현 (본인 게시글만 삭제 가능)
-- [ ] 게시글 상세 페이지 서버 컴포넌트 구현 (감정, 태그, 본문, 작성 시간, 조회수)
-- [ ] 익명 게시글의 작성자 정보 "익명" 표시 처리
-- [ ] Playwright MCP 테스트: 게시글 상세 조회 API, 조회수 증가, 삭제 권한 확인
-- [ ] **반응형**: Mobile(단일 컬럼) / Tablet(게시글 + 우측 댓글 패널 2분할) / Desktop(게시글 + 댓글 + 우측 추천 글 3컬럼)
+- [x] `GET /api/posts/[id]` Route Handler 구현 (`params`를 반드시 `await`, 조회 시 `view_count` +1)
+- [x] `DELETE /api/posts/[id]` Route Handler 구현 (본인 게시글만 삭제 가능)
+- [x] 게시글 상세 페이지 서버 컴포넌트 구현 (감정, 태그, 본문, 작성 시간, 조회수)
+- [x] 익명 게시글의 작성자 정보 "익명" 표시 처리
+- [x] Playwright MCP 테스트: 게시글 상세 조회 API, 조회수 증가, 삭제 권한 확인
+- [x] **반응형**: Mobile(단일 컬럼) / Tablet(게시글 + 우측 댓글 패널 2분할) / Desktop(게시글 + 댓글 + 우측 추천 글 3컬럼)
 
 ---
 
