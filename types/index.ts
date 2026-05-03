@@ -37,3 +37,9 @@ export type PostWithMeta = Post & {
 export type PostDetail = PostWithMeta & {
   comments: CommentWithAuthor[]
 }
+
+/** 댓글 + 작성자 + 대댓글 목록 (UI 표시용) */
+export type CommentWithReplies = Comment & {
+  author: Pick<Profile, 'id' | 'nickname'> | null
+  replies: (Comment & { author: Pick<Profile, 'id' | 'nickname'> | null })[]
+}
