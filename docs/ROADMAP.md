@@ -351,13 +351,13 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `GET /api/posts/[id]/comments` Route Handler 구현 (`params` await 필수, 댓글 + 대댓글 `parent_id` 기반 트리 구조 응답)
-- [ ] `POST /api/posts/[id]/comments` Route Handler 구현 (인증 필수, Zod 검증: 1~500자)
-- [ ] 댓글 삭제 API 구현 (본인 댓글만)
-- [ ] 댓글 목록 UI (작성자 표시, 익명 옵션, 대댓글 들여쓰기)
-- [ ] 댓글 입력 폼 (익명 토글 포함)
-- [ ] 비로그인 상태 댓글 작성 시도 시 로그인 유도 토스트
-- [ ] Playwright MCP 테스트: 댓글 CRUD, 대댓글 parent_id 연결 확인
+- [x] `GET /api/posts/[id]/comments` Route Handler 구현 (`params` await 필수, 댓글 + 대댓글 `parent_id` 기반 트리 구조 응답)
+- [x] `POST /api/posts/[id]/comments` Route Handler 구현 (인증 필수, Zod 검증: 1~500자)
+- [x] 댓글 삭제 API 구현 (본인 댓글만)
+- [x] 댓글 목록 UI (작성자 표시, 대댓글 들여쓰기)
+- [x] 댓글 입력 폼 + 대댓글 인라인 폼
+- [x] 비로그인 상태 댓글 작성 시도 시 로그인 유도 토스트
+- [x] Playwright MCP 테스트: 댓글 작성/삭제, 대댓글 parent_id 연결 확인
 
 ---
 
