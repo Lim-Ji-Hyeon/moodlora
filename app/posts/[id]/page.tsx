@@ -112,13 +112,13 @@ export default async function PostDetailPage(
 
           {/* 댓글은 md 미만에서만 메인 컬럼에 표시 */}
           <div className="md:hidden">
-            <CommentSection postId={id} />
+            <CommentSection postId={id} currentUserId={user?.id ?? null} />
           </div>
         </div>
 
         {/* ── 댓글 패널 (md 이상) ──────────────────────────────────────────── */}
         <div className="hidden md:block bg-card rounded-2xl border border-border p-5 shadow-sm">
-          <CommentSection postId={id} />
+          <CommentSection postId={id} currentUserId={user?.id ?? null} />
         </div>
 
         {/* ── 추천 패널 (lg 이상, Task 4.1 placeholder) ────────────────────── */}
