@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import type { PostWithMeta, Profile } from '@/types'
 import type { ReactionType } from '@/lib/constants/reactions'
+import type { EmotionType } from '@/lib/constants/emotions'
 import PostDetailContent from './_components/PostDetailContent'
 import ReactionBar       from './_components/ReactionBar'
 import CommentSection    from './_components/CommentSection'
@@ -81,6 +82,17 @@ export default async function PostDetailPage(
   const { data: { user } } = await supabase.auth.getUser()
   const isOwner = !!user && user.id === raw.author_id && !raw.is_anonymous
 
+  // ─── 현재 사용자의 이 게시글 반응 목록 조회 ──────────────────────────────────
+  let userReactions: ReactionType[] = []
+  if (user) {
+    const { data: myReactions } = await supabase
+      .from('reactions')
+      .select('type')
+      .eq('post_id', id)
+      .eq('user_id', user.id)
+    userReactions = (myReactions ?? []).map((r) => r.type as ReactionType)
+  }
+
   // ─── 레이아웃 ──────────────────────────────────────────────────────────────
   return (
     <div className="max-w-6xl mx-auto">
@@ -90,7 +102,13 @@ export default async function PostDetailPage(
         <div className="space-y-0 bg-card rounded-2xl border border-border p-6 shadow-sm">
           <PostDetailContent post={post} isOwner={isOwner} />
 
-          <ReactionBar postId={id} reactionCounts={post.reaction_counts} />
+          <ReactionBar
+            postId={id}
+            emotion={post.emotion as EmotionType}
+            reactionCounts={post.reaction_counts}
+            userReactions={userReactions}
+            currentUserId={user?.id ?? null}
+          />
 
           {/* 댓글은 md 미만에서만 메인 컬럼에 표시 */}
           <div className="md:hidden">

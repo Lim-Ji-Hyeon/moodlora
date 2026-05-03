@@ -337,13 +337,13 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `POST /api/posts/[id]/reactions` Route Handler 구현 (`params` await 필수, 인증 필수, 반응 토글: 있으면 삭제, 없으면 생성)
-- [ ] Zod 스키마로 `reaction_type` 검증
-- [ ] 4종 공감 반응 버튼 UI (나도 그래, 너무 슬퍼, 화가 나, 힘내세요)
-- [ ] TanStack Query 낙관적 업데이트: 버튼 탭 시 즉시 카운트 반영, 서버 실패 시 롤백
-- [ ] 4종 반응 동시 가능, 같은 타입만 중복 불가 (토글)
-- [ ] 비로그인 상태 반응 시도 시 로그인 유도 토스트
-- [ ] Playwright MCP 테스트: 반응 토글 API, 중복 방지, 낙관적 업데이트 롤백 시나리오
+- [x] `POST /api/posts/[id]/reactions` Route Handler 구현 (`params` await 필수, 인증 필수, 반응 토글: 있으면 삭제, 없으면 생성)
+- [x] Zod 스키마로 `reaction_type` 검증
+- [x] 4종 공감 반응 버튼 UI (나도 그래, 너무 슬퍼, 화가 나, 힘내세요)
+- [x] TanStack Query 낙관적 업데이트: 버튼 탭 시 즉시 카운트 반영, 서버 실패 시 롤백
+- [x] 4종 반응 동시 가능, 같은 타입만 중복 불가 (토글)
+- [x] 비로그인 상태 반응 시도 시 로그인 유도 토스트
+- [x] Playwright MCP 테스트: 반응 토글 API, 중복 방지, 낙관적 업데이트 롤백 시나리오
 
 ---
 
