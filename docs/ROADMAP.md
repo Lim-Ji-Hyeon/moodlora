@@ -365,15 +365,15 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `POST /api/emotions` Route Handler 구현 (인증 필수, Zod 검증)
-- [ ] `GET /api/emotions/history` Route Handler 구현 (기간 필터: 7일/30일/90일, 본인 레코드만)
-- [ ] `/history` 페이지 구현 (인증 필수 페이지)
-- [ ] Recharts `AreaChart`로 날짜별 감정 분포 시각화 (감정별 색상 적용)
-- [ ] 7일/30일/90일 기간 필터 탭 UI
-- [ ] 특정 날짜 포인트 선택 시 해당일 감정 로그 목록 하단 표시
-- [ ] 히스토리 없음 시 안내 메시지 + 감정 기록 유도 UI
-- [ ] Playwright MCP 테스트: 감정 기록 API, 히스토리 조회 기간 필터 확인
-- [ ] **반응형**: Mobile(단일 컬럼 차트) / Desktop(좌측 기간 필터 + 통계 카드, 우측 넓은 차트)
+- [x] `POST /api/emotions` Route Handler 구현 (인증 필수, Zod 검증)
+- [x] `GET /api/emotions/history` Route Handler 구현 (기간 필터: 7일/30일/90일, 본인 레코드만)
+- [x] `/history` 페이지 구현 (인증 필수 페이지)
+- [x] Recharts `AreaChart`로 날짜별 감정 분포 시각화 (감정별 색상 적용)
+- [x] 7일/30일/90일 기간 필터 탭 UI
+- [x] 특정 날짜 포인트 선택 시 해당일 감정 로그 목록 하단 표시
+- [x] 히스토리 없음 시 안내 메시지 + 감정 기록 유도 UI
+- [x] Playwright MCP 테스트: 감정 기록 API, 히스토리 조회 기간 필터 확인
+- [x] **반응형**: Mobile(단일 컬럼 차트) / Desktop(좌측 기간 필터 + 통계 카드, 우측 넓은 차트)
 
 ---
 
@@ -381,14 +381,14 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `GET /api/search` Route Handler 구현 (Supabase `ilike` 검색, `searchParams` await 필수)
-- [ ] 감정 필터, 태그 필터와 키워드 검색 조합 지원
-- [ ] 최소 2자 이상 입력 시 검색 실행 (클라이언트 유효성)
-- [ ] `/search` 페이지 구현: 검색 입력, 필터 UI, 결과 리스트 (`PostCard` 재활용)
-- [ ] 검색 결과 없음 시 빈 상태 화면 표시
-- [ ] 검색 중 로딩 스피너 표시
-- [ ] Playwright MCP 테스트: 검색 API 키워드/필터 조합 결과 확인
-- [ ] **반응형**: Mobile(상단 검색바 + 필터 칩 가로 스크롤 + 결과 목록) / Desktop(좌측 필터 사이드바 + 중앙 결과 + 우측 추천 패널)
+- [x] `GET /api/search` Route Handler 구현 (Supabase `ilike` 검색, `searchParams` await 필수)
+- [x] 감정 필터, 태그 필터와 키워드 검색 조합 지원
+- [x] 최소 2자 이상 입력 시 검색 실행 (클라이언트 유효성)
+- [x] `/search` 페이지 구현: 검색 입력, 필터 UI, 결과 리스트 (`PostCard` 재활용)
+- [x] 검색 결과 없음 시 빈 상태 화면 표시
+- [x] 검색 중 로딩 스피너 표시
+- [x] Playwright MCP 테스트: 검색 API 키워드/필터 조합 결과 확인
+- [x] **반응형**: Mobile(상단 검색바 + 필터 칩 가로 스크롤 + 결과 목록) / Desktop(좌측 필터 사이드바 + 중앙 결과 + 우측 추천 패널)
 
 ---
 
