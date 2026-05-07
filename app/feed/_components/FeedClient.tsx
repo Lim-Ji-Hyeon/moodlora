@@ -1,17 +1,26 @@
-'use client'
+"use client";
 
-import { useSearchParams } from 'next/navigation'
-import EmotionFilterBar from './EmotionFilterBar'
-import TagFilter from './TagFilter'
-import SortTabs from './SortTabs'
-import FeedList from './FeedList'
+import { useSearchParams } from "next/navigation";
+import EmotionFilterBar from "./EmotionFilterBar";
+import TagFilter from "./TagFilter";
+import SortTabs from "./SortTabs";
+import FeedList from "./FeedList";
+import RecommendationPanel from "@/components/recommendations/RecommendationPanel";
+import { useEmotionStore } from "@/stores/emotionStore";
+import type { EmotionType } from "@/lib/constants/emotions";
 
 export default function FeedClient() {
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
+  const currentEmotion = useEmotionStore((s) => s.currentEmotion);
 
-  const emotion = searchParams.get('emotion') ?? undefined
-  const tags    = searchParams.get('tags')?.split(',').filter(Boolean) ?? []
-  const sort    = (searchParams.get('sort') === 'popular' ? 'popular' : 'latest') as 'latest' | 'popular'
+  const emotion = searchParams.get("emotion") ?? undefined;
+  const tags = searchParams.get("tags")?.split(",").filter(Boolean) ?? [];
+  const sort = (
+    searchParams.get("sort") === "popular" ? "popular" : "latest"
+  ) as "latest" | "popular";
+
+  // 피드 필터에서 선택한 감정 우선, 없으면 Zustand 현재 감정 폴백
+  const panelEmotion = (emotion as EmotionType | undefined) ?? currentEmotion;
 
   return (
     <>
@@ -44,14 +53,19 @@ export default function FeedClient() {
           <FeedList emotion={emotion} tags={tags} sort={sort} />
         </main>
 
-        {/* 우측 패널 (Desktop only) — 추천 영역 placeholder */}
+        {/* 우측 패널 (Desktop only) — 추천 */}
         <aside className="hidden w-64 shrink-0 lg:block">
           <div className="sticky top-6 rounded-xl border border-border bg-card p-4">
-            <p className="text-xs font-medium text-muted-foreground">이런 글은 어때요?</p>
-            <p className="mt-2 text-xs text-muted-foreground">추천 기능은 곧 추가될 예정이에요.</p>
+            {panelEmotion ? (
+              <RecommendationPanel emotion={panelEmotion} />
+            ) : (
+              <p className="text-xs text-muted-foreground">
+                감정을 선택하면 추천 글이 표시돼요.
+              </p>
+            )}
           </div>
         </aside>
       </div>
     </>
-  )
+  );
 }
