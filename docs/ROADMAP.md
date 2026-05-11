@@ -406,11 +406,11 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 2일
 
-- [ ] `GET /api/recommendations` Route Handler 구현 (같은 감정 인기순 3개 + 보완 감정 2개 조합)
-- [ ] 보완 감정 매핑 로직 적용 (ANXIETY->CALM, SADNESS->JOY/EXCITEMENT, ANGER->CALM)
-- [ ] 이미 읽은 게시글(조회 이력) 추천 제외 처리
-- [ ] 피드 하단 "이런 글은 어때요?" 추천 섹션 UI (카드 최대 5개)
-- [ ] Playwright MCP 테스트: 추천 API 응답 구조 및 보완 감정 매핑 확인
+- [x] `GET /api/recommendations` Route Handler 구현 (같은 감정 인기순 3개 + 보완 감정 2개 조합)
+- [x] 보완 감정 매핑 로직 적용 (ANXIETY->CALM, SADNESS->JOY/EXCITEMENT, ANGER->CALM)
+- [x] 이미 읽은 게시글(조회 이력) 추천 제외 처리
+- [x] 피드 하단 "이런 글은 어때요?" 추천 섹션 UI (카드 최대 5개)
+- [x] Playwright MCP 테스트: 추천 API 응답 구조 및 보완 감정 매핑 확인
 
 ---
 
@@ -418,14 +418,14 @@ Stitch MCP로 제작된 반응형 프로토타입을 기반으로 개발한다.
 
 **담당**: 풀스택 | **예상**: 3일
 
-- [ ] `POST /api/safety/report` Route Handler 구현 (인증 필수, Zod 검증: 사유 필수 선택)
-- [ ] `POST /api/safety/hide` Route Handler 구현 (인증 필수, `hidden_posts` 기록)
-- [ ] `POST /api/safety/block` Route Handler 구현 (인증 필수, `blocks` 테이블 기록)
-- [ ] `PostMenu` 컴포넌트 구현 (더보기 메뉴: 신고/숨기기/작성자 차단, 자기 게시글은 메뉴 미표시)
-- [ ] 신고 다이얼로그 UI (사유 선택: SPAM, HARASSMENT, INAPPROPRIATE_CONTENT, FALSE_INFORMATION, OTHER)
-- [ ] 숨긴 게시글 피드에서 즉시 제거 (클라이언트 캐시 업데이트)
-- [ ] 동일 게시글 신고 5건 이상 시 자동 숨김 처리 (DB 트리거 또는 API 로직)
-- [ ] Playwright MCP 테스트: 신고/숨기기/차단 API 동작 및 피드 필터링 확인
+- [x] `POST /api/safety/report` Route Handler 구현 (인증 필수, Zod 검증: 사유 필수 선택)
+- [x] `POST /api/safety/hide` Route Handler 구현 (인증 필수, `hidden_posts` 기록)
+- [x] `POST /api/safety/block` Route Handler 구현 (인증 필수, `blocks` 테이블 기록)
+- [x] `PostMenu` 컴포넌트 구현 (더보기 메뉴: 신고/숨기기/작성자 차단, 자기 게시글은 메뉴 미표시)
+- [x] 신고 다이얼로그 UI (사유 선택: SPAM, HARASSMENT, INAPPROPRIATE_CONTENT, FALSE_INFORMATION, OTHER)
+- [x] 숨긴 게시글 피드에서 즉시 제거 (클라이언트 캐시 업데이트)
+- [x] 동일 게시글 신고 5건 이상 시 자동 숨김 처리 (DB 트리거 또는 API 로직)
+- [x] Playwright MCP 테스트: 신고/숨기기/차단 API 동작 및 피드 필터링 확인
 
 ---
 
