@@ -15,7 +15,7 @@ export default async function SearchPage({
   await searchParams
 
   return (
-    <Suspense fallback={<div className="flex items-center justify-center py-20 text-sm text-muted-foreground">로딩 중...</div>}>
+    <Suspense>
       <SearchClient />
     </Suspense>
   )

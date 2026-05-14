@@ -15,7 +15,7 @@ export default async function HistoryPage({
   await searchParams
 
   return (
-    <Suspense fallback={<div className="flex items-center justify-center py-20 text-muted-foreground text-sm">로딩 중...</div>}>
+    <Suspense>
       <HistoryClient />
     </Suspense>
   )
