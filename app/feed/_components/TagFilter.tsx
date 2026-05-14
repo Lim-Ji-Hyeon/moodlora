@@ -24,13 +24,14 @@ export default function TagFilter() {
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div role="group" aria-label="상황 태그 필터" className="flex flex-wrap gap-2">
       {SITUATION_TAGS.map((tag) => {
         const selected = selectedTags.includes(tag)
         return (
           <button
             key={tag}
             onClick={() => toggle(tag)}
+            aria-pressed={selected}
             className={[
               'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
               selected

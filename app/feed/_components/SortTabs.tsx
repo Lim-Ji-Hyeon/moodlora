@@ -23,11 +23,12 @@ export default function SortTabs() {
   }
 
   return (
-    <div className="flex gap-1 rounded-lg border border-border bg-muted p-1">
+    <div role="group" aria-label="정렬 방식" className="flex gap-1 rounded-lg border border-border bg-muted p-1">
       {TABS.map(({ value, label }) => (
         <button
           key={value}
           onClick={() => select(value)}
+          aria-pressed={current === value}
           className={[
             'flex-1 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
             current === value
