@@ -6,7 +6,9 @@ import { MessageCircle, Send, Trash2, CornerDownRight } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
+import EmptyState from '@/components/ui/EmptyState'
 import type { CommentWithReplies } from '@/types'
 
 interface CommentSectionProps {
@@ -188,16 +190,18 @@ export default function CommentSection({ postId, currentUserId }: CommentSection
       {isLoading ? (
         <div className="space-y-3">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="animate-pulse space-y-1.5">
-              <div className="h-3 w-24 bg-muted rounded" />
-              <div className="h-4 w-full bg-muted rounded" />
+            <div key={i} className="space-y-1.5">
+              <Skeleton className="h-3 w-24" />
+              <Skeleton className="h-4 w-full" />
             </div>
           ))}
         </div>
       ) : comments.length === 0 ? (
-        <div className="py-8 text-center text-sm text-muted-foreground">
-          아직 댓글이 없어요. 따뜻한 한마디를 남겨보세요 💬
-        </div>
+        <EmptyState
+          emoji="💬"
+          title="아직 댓글이 없어요"
+          description="따뜻한 한마디를 남겨보세요"
+        />
       ) : (
         <ul className="space-y-4">
           {comments.map((comment) => (

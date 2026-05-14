@@ -6,6 +6,7 @@ import { useFeedQuery } from "@/hooks/useFeedQuery";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import PostCard from "./PostCard";
 import PostCardSkeleton from "./PostCardSkeleton";
+import EmptyState from "@/components/ui/EmptyState";
 import type { FeedApiResponse } from "@/hooks/useFeedQuery";
 import type { InfiniteData } from "@tanstack/react-query";
 
@@ -115,17 +116,11 @@ export default function FeedList({ emotion, tags, sort }: FeedListProps) {
   if (posts.length === 0) {
     const hasFilter = emotion || tags.length > 0;
     return (
-      <div className="flex flex-col items-center gap-2 py-16 text-center">
-        <p className="text-2xl">🌙</p>
-        <p className="text-sm font-medium text-foreground">
-          {hasFilter ? "조건에 맞는 글이 없어요" : "아직 글이 없어요"}
-        </p>
-        <p className="text-xs text-muted-foreground">
-          {hasFilter
-            ? "다른 감정이나 태그로 탐색해 보세요"
-            : "첫 번째 글을 남겨보세요"}
-        </p>
-      </div>
+      <EmptyState
+        emoji="🌙"
+        title={hasFilter ? "조건에 맞는 글이 없어요" : "아직 글이 없어요"}
+        description={hasFilter ? "다른 감정이나 태그로 탐색해 보세요" : "첫 번째 글을 남겨보세요"}
+      />
     );
   }
 

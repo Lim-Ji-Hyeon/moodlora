@@ -6,6 +6,7 @@ import type { EmotionType } from '@/lib/constants/emotions'
 import type { SearchApiResponse } from '@/lib/validations/search'
 import PostCard          from '@/app/feed/_components/PostCard'
 import PostCardSkeleton  from '@/app/feed/_components/PostCardSkeleton'
+import EmptyState        from '@/components/ui/EmptyState'
 import SearchInput       from './SearchInput'
 import SearchEmotionFilter from './SearchEmotionFilter'
 import SearchTagFilter   from './SearchTagFilter'
@@ -89,11 +90,11 @@ export default function SearchClient() {
             {Array.from({ length: 3 }).map((_, i) => <PostCardSkeleton key={i} />)}
           </div>
         ) : posts.length === 0 ? (
-          <div className="flex flex-col items-center gap-3 py-16 text-center">
-            <p className="text-3xl">😶</p>
-            <p className="text-sm font-medium text-foreground">검색 결과가 없어요</p>
-            <p className="text-xs text-muted-foreground">다른 키워드나 필터로 찾아보세요.</p>
-          </div>
+          <EmptyState
+            emoji="😶"
+            title="검색 결과가 없어요"
+            description="다른 키워드나 필터로 찾아보세요"
+          />
         ) : (
           <div className="space-y-3">
             <p className="text-xs text-muted-foreground">

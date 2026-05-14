@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import PostCard from '@/app/feed/_components/PostCard'
 import PostCardSkeleton from '@/app/feed/_components/PostCardSkeleton'
+import EmptyState from '@/components/ui/EmptyState'
 import { usePublicPostsQuery } from '@/hooks/usePublicPostsQuery'
 
 type Props = {
@@ -78,10 +79,10 @@ export default function PublicProfileClient({ userId, nickname }: Props) {
         )}
 
         {!isLoading && !isError && posts.length === 0 && (
-          <div className="flex flex-col items-center gap-2 py-16 text-center">
-            <p className="text-2xl">📭</p>
-            <p className="text-sm font-medium text-foreground">아직 공개된 글이 없어요</p>
-          </div>
+          <EmptyState
+            emoji="📭"
+            title="아직 공개된 글이 없어요"
+          />
         )}
 
         {posts.map((post) => (

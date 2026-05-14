@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import PostCard from '@/app/feed/_components/PostCard'
 import PostCardSkeleton from '@/app/feed/_components/PostCardSkeleton'
+import EmptyState from '@/components/ui/EmptyState'
 import NicknameEditForm from './NicknameEditForm'
 import { useProfilePostsQuery } from '@/hooks/useProfilePostsQuery'
 import type { Profile } from '@/types'
@@ -117,11 +118,11 @@ export default function ProfileClient({ profile, currentUserId }: Props) {
         )}
 
         {!isLoading && !isError && posts.length === 0 && (
-          <div className="flex flex-col items-center gap-2 py-16 text-center">
-            <p className="text-2xl">✍️</p>
-            <p className="text-sm font-medium text-foreground">아직 작성한 글이 없어요</p>
-            <p className="text-xs text-muted-foreground">오늘의 감정을 기록해 보세요</p>
-          </div>
+          <EmptyState
+            emoji="✍️"
+            title="아직 작성한 글이 없어요"
+            description="오늘의 감정을 기록해 보세요"
+          />
         )}
 
         {posts.map((post) => (
